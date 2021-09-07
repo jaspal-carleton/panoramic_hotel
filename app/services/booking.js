@@ -75,7 +75,7 @@ async function fetchBooking(uid) {
         let bookingDetails = bookingDetailsDB.get(uid);
         if (typeof bookingDetails !== "undefined") {
             obj.status = true;
-            obj.data = {...bookingDetails};
+            obj.data = { ...bookingDetails };
         }
         return obj;
     } catch (err) {
@@ -87,7 +87,20 @@ async function fetchBooking(uid) {
 
 async function deleteBooking(uid) {
     try {
-        return {};
+        let obj = {
+            status: false
+        };
+        let bookingDetails = bookingDetailsDB.get(uid);
+        if (typeof bookingDetails !== "undefined") {
+            const bookingDateList = getBookingDateList(bookingDetails.checkin_date, bookingDetails.checkout_date);
+            for (const bookingDate of bookingDateList) {
+                bookingDatesDB.delete(bookingDate);
+            };
+            bookingDetailsDB.delete(uid);
+            obj.status = true;
+            obj.data = {};
+        }
+        return obj;
     } catch (err) {
         throw {
             message: err
