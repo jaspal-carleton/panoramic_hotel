@@ -72,7 +72,96 @@ The app requires NodeJS and NPM to be installed on the system where this applica
 | /api/v1/booking/:id | GET     | http://localhost:5000/api/v1/booking/:id  | Fetch booking details using booking id             |
 | /api/v1/booking/:id | DELETE  | http://localhost:5000/api/v1/booking/:id  | Delete booking using booking id                    |
 
-## Authors
+### Schema of HTTP POST Request Body Object
+
+```JS
+{
+    "email": "<email id of principal guest>",
+    "first_name": "<first name of principal guest>",
+    "last_name": "<last name of principal guest>",
+    "guest_count": "<number of people or guests including principal guest>",
+    "checkin_date": "<hotel booking check-in date>",
+    "checkout_date": "<hotel booking check-out date>"
+}
+```
+
+Example
+```JS
+{
+    "email": "john.doe@example.com",
+    "first_name": "John",
+    "last_name": "Doe",
+    "guest_count": 2,
+    "checkin_date": "2021-09-10",
+    "checkout_date": "2021-09-12"
+}
+```
+
+### Data Type and Value Constraints
+
+* Following constraints apply to HTTP POST Request Body Object
+
+| Attribute     | Data Type | Constraint                                          |
+|---------------|-----------|-----------------------------------------------------|
+| email         | String    | Email ID in valid and acceptable format             |
+| first_name    | String    | Valid Unicode string with more than one characters  |
+| last_name     | String    | Valid Unicode string with more than one characters  |
+| guest_count   | Number    | Minimum one and maximun three guests allowed        |
+| checkin_date  | String    | Date in YYYY-MM-DD format should be future date     |
+| checkout_date | String    | Date in YYYY-MM-DD format should be future date     |
+
+* Maximum of three days allowed for hotel booking
+
+### Response Object
+
+* Sample Success response after creating new booking
+
+```JS
+{
+    "success": true,
+    "data": {
+        "booking_id": "abb0aedd-a9c2-445e-94b6-0d2eb59d2f7d",
+        "email_id": "john.doe@example.com",
+        "retrive_booking": {
+            "http_method": "GET",
+            "api_endpoint": "/api/v1/booking/:booking_id",
+            "full_url": "http://localhost:5000/api/v1/booking/abb0aedd-a9c2-445e-94b6-0d2eb59d2f7d"
+        },
+        "cancel_booking": {
+            "http_method": "DELETE",
+            "api_endpoint": "/api/v1/booking/:booking_id",
+            "full_url": "http://localhost:5000/api/v1/booking/abb0aedd-a9c2-445e-94b6-0d2eb59d2f7d"
+        }
+    }
+}
+```
+
+* Sample Success response after fetching exisitng booking
+
+```JS
+{
+    "success": true,
+    "data": {
+        "email": "john.doe@example.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "guest_count": "2",
+        "checkin_date": "2021-09-10",
+        "checkout_date": "2021-09-12"
+    }
+}
+```
+
+* Sample Success response after deleting exisitng booking
+
+```JS
+{
+    "success": true,
+    "data": {}
+}
+```
+
+## Author
 
 Jaspal Singh
 
