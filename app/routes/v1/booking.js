@@ -143,10 +143,20 @@ router.get('/booking/:id', (req, res, next) => {
 /**
  * Delete booking
  */
-router.delete('/booking/:id', (req, res, next) => {
+ router.delete('/booking/:id', (req, res, next) => {
     const params = req.params;
     const id = params.id;
-    res.send(200);
+    const reply = deleteBooking(id);
+    reply.then(result => {
+        if (result.status) {
+            res.status(200);
+            res.json(generateSuccess(result.data));
+        }
+        else {
+            next(generateError(404, "NO_BOOKING_FOUND"));
+        }
+    });
+    reply.catch(err => next(generateError(500, "INTERNAL_SERVER_ERROR")));
 });
 
 /**
