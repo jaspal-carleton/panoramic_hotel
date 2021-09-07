@@ -120,21 +120,23 @@ Example
 {
     "success": true,
     "data": {
-        "booking_id": "abb0aedd-a9c2-445e-94b6-0d2eb59d2f7d",
+        "booking_id": "61800372-2793-4102-92a0-509e72cee045",
         "email_id": "john.doe@example.com",
         "retrive_booking": {
             "http_method": "GET",
             "api_endpoint": "/api/v1/booking/:booking_id",
-            "full_url": "http://localhost:5000/api/v1/booking/abb0aedd-a9c2-445e-94b6-0d2eb59d2f7d"
+            "full_url": "http://localhost:5000/api/v1/booking/61800372-2793-4102-92a0-509e72cee045"
         },
         "cancel_booking": {
             "http_method": "DELETE",
             "api_endpoint": "/api/v1/booking/:booking_id",
-            "full_url": "http://localhost:5000/api/v1/booking/abb0aedd-a9c2-445e-94b6-0d2eb59d2f7d"
+            "full_url": "http://localhost:5000/api/v1/booking/61800372-2793-4102-92a0-509e72cee045"
         }
     }
 }
 ```
+
+![Create Booking Success](docs/create_booking_success.png)
 
 * Sample Success response after fetching exisitng booking
 
@@ -152,6 +154,8 @@ Example
 }
 ```
 
+![Fetch Booking Success](docs/fetch_booking_success.png)
+
 * Sample Success response after deleting exisitng booking
 
 ```JS
@@ -160,6 +164,8 @@ Example
     "data": {}
 }
 ```
+
+![Delete Booking Success](docs/delete_booking_success.png)
 
 ## Author
 
