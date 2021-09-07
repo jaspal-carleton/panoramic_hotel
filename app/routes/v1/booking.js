@@ -1,27 +1,27 @@
 /**
  * Module dependencies
  */
- const router = require('express').Router();
- const {
-     createBooking,
-     fetchBooking,
-     deleteBooking
- } = require('../../services/booking');
- const {
-     generateError,
-     generateSuccess
- } = require('../../helpers/response');
- const {
-     validateParams
- } = require('../../helpers/params');
- const {
-     validateEmail,
-     validateName,
-     validateGuestCount,
-     validateDateFormat,
-     validateBookingStartDate,
-     validateDateRange
- } = require('../../helpers/payload');
+const router = require('express').Router();
+const {
+    createBooking,
+    fetchBooking,
+    deleteBooking
+} = require('../../services/booking');
+const {
+    generateError,
+    generateSuccess
+} = require('../../helpers/response');
+const {
+    validateParams
+} = require('../../helpers/params');
+const {
+    validateEmail,
+    validateName,
+    validateGuestCount,
+    validateDateFormat,
+    validateBookingStartDate,
+    validateDateRange
+} = require('../../helpers/payload');
 
 /**
  * Route interceptor for creating new booking
@@ -95,7 +95,30 @@ router.post('/booking', (req, res, next) => {
         checkin_date,
         checkout_date
     );
-    res.send(200);
+    reply.then(result => {
+        if (result.status) {
+            const obj = {
+                booking_id: result.id,
+                email_id: result.email,
+                retrive_booking: {
+                    http_method: 'GET',
+                    api_endpoint: '/api/v1/booking/:booking_id',
+                    full_url: 'http://localhost:5000/api/v1/booking/' + result.id
+                },
+                cancel_booking: {
+                    http_method: 'DELETE',
+                    api_endpoint: '/api/v1/booking/:booking_id',
+                    full_url: 'http://localhost:5000/api/v1/booking/' + result.id
+                }
+            }
+            res.status(200);
+            res.json(generateSuccess(obj));
+        }
+        else {
+            next(generateError(409, "BOOKING_DATE_UNAVAILABLE"));
+        }
+    });
+    reply.catch(err => next(generateError(500, "INTERNAL_SERVER_ERROR")));
 });
 
 /**
@@ -104,7 +127,17 @@ router.post('/booking', (req, res, next) => {
 router.get('/booking/:id', (req, res, next) => {
     const params = req.params;
     const id = params.id;
-    res.send(200);
+    const reply = fetchBooking(id);
+    reply.then(result => {
+        if (result.status) {
+            res.status(200);
+            res.json(generateSuccess(result.data));
+        }
+        else {
+            next(generateError(404, "NO_BOOKING_FOUND"));
+        }
+    });
+    reply.catch(err => next(generateError(500, "INTERNAL_SERVER_ERROR")));
 });
 
 /**
