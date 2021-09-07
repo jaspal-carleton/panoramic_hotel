@@ -1,7 +1,15 @@
 /**
  * Module dependencies
  */
+const HashMap = require('hashmap');
 const { generateRandomUid } = require('../helpers/hash');
+const { getBookingDateList } = require('../helpers/payload');
+
+/**
+ * Setup in-memory database
+ */
+let bookingDetailsDB = new HashMap();
+let bookingDatesDB = new HashMap();
 
 /**
  * @description Create new booking
@@ -21,8 +29,23 @@ async function createBooking(
     checkin_date,
     checkout_date) {
     try {
+        let obj = {
+            status: false
+        };
         const uid = generateRandomUid();
-        return uid;
+        bookingDetailsDB.set(uid, {
+            email,
+            first_name,
+            last_name,
+            guest_count,
+            checkin_date,
+            checkout_date
+        });
+        obj.status = true;
+        obj.id = uid;
+        obj.email = email;
+        console.log("New booking", obj);
+        return obj;
     } catch (err) {
         throw {
             message: err

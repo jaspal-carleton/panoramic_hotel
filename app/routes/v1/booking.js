@@ -1,23 +1,27 @@
 /**
  * Module dependencies
  */
-const router = require('express').Router();
-
-const {
-    generateError,
-    generateSuccess
-} = require('../../helpers/response');
-const {
-    validateParams
-} = require('../../helpers/params');
-const {
-    validateEmail,
-    validateName,
-    validateGuestCount,
-    validateDateFormat,
-    validateBookingStartDate,
-    validateDateRange
-} = require('../../helpers/payload');
+ const router = require('express').Router();
+ const {
+     createBooking,
+     fetchBooking,
+     deleteBooking
+ } = require('../../services/booking');
+ const {
+     generateError,
+     generateSuccess
+ } = require('../../helpers/response');
+ const {
+     validateParams
+ } = require('../../helpers/params');
+ const {
+     validateEmail,
+     validateName,
+     validateGuestCount,
+     validateDateFormat,
+     validateBookingStartDate,
+     validateDateRange
+ } = require('../../helpers/payload');
 
 /**
  * Route interceptor for creating new booking
@@ -81,7 +85,16 @@ router.post('/booking', (req, res, next) => {
         next(generateError(400, "INVALID_HOLIDAY_COUNT"));
         return;
     }
-    
+
+    // Create new booking
+    const reply = createBooking(
+        email,
+        first_name,
+        last_name,
+        guest_count,
+        checkin_date,
+        checkout_date
+    );
     res.send(200);
 });
 
