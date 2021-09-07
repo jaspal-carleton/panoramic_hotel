@@ -19,7 +19,7 @@ function generateError(code, message) {
  * @param {Object} data - data object
  * @returns {Object} response object
  */
- function generateSuccess(data) {
+function generateSuccess(data) {
     const obj = {
         success: true,
         data: data,

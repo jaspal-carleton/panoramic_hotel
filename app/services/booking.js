@@ -32,19 +32,33 @@ async function createBooking(
         let obj = {
             status: false
         };
-        const uid = generateRandomUid();
-        bookingDetailsDB.set(uid, {
-            email,
-            first_name,
-            last_name,
-            guest_count,
-            checkin_date,
-            checkout_date
-        });
-        obj.status = true;
-        obj.id = uid;
-        obj.email = email;
-        console.log("New booking", obj);
+        let isBookingExist = false;
+        const bookingDateList = getBookingDateList(checkin_date, checkout_date);
+        for (const bookingDate of bookingDateList) {
+            if (typeof bookingDatesDB.get(bookingDate) !== "undefined") {
+                isBookingExist = true;
+            }
+        };
+        if (!isBookingExist) {
+            const uid = generateRandomUid();
+            bookingDetailsDB.set(uid, {
+                email,
+                first_name,
+                last_name,
+                guest_count,
+                checkin_date,
+                checkout_date
+            });
+            for (const bookingDate of bookingDateList) {
+                bookingDatesDB.set(bookingDate, {
+                    id: uid
+                });
+            };
+            obj.status = true;
+            obj.id = uid;
+            obj.email = email;
+            console.log("New booking", obj);
+        }
         return obj;
     } catch (err) {
         throw {

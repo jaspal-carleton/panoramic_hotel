@@ -97,7 +97,7 @@ function getBookingDateList(startDate, endDate) {
         rtnArr.push(endMs);
     } else if (diffMs === 172800000) {
         rtnArr.push(startMs);
-        rtnArr.push(startMs+86400000);
+        rtnArr.push(startMs + 86400000);
         rtnArr.push(endMs);
     } else {
         rtnArr.push(startMs);
