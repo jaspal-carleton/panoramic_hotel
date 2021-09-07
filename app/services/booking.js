@@ -69,7 +69,15 @@ async function createBooking(
 
 async function fetchBooking(uid) {
     try {
-        return {};
+        let obj = {
+            status: false
+        };
+        let bookingDetails = bookingDetailsDB.get(uid);
+        if (typeof bookingDetails !== "undefined") {
+            obj.status = true;
+            obj.data = {...bookingDetails};
+        }
+        return obj;
     } catch (err) {
         throw {
             message: err
