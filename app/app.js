@@ -33,6 +33,18 @@ const cors = require('cors')
 app.use(cors());
 
 /**
+ * Attach ExpressJS router
+ */
+const routes = require('./routes/index');
+app.use('/api', routes);
+
+/**
+ * Error handler middleware
+ */
+const { errorHandler } = require('./middlewares/error');
+app.use(errorHandler);
+
+/**
  * Export express app
  */
 module.exports = app;
