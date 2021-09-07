@@ -143,7 +143,7 @@ router.get('/booking/:id', (req, res, next) => {
 /**
  * Delete booking
  */
- router.delete('/booking/:id', (req, res, next) => {
+router.delete('/booking/:id', (req, res, next) => {
     const params = req.params;
     const id = params.id;
     const reply = deleteBooking(id);
