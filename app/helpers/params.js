@@ -25,7 +25,7 @@ function validateParams(args = {}, paramList = []) {
             isValid = false;
             break;
         }
-        
+
         const isEmpty = (value === "" || value === null);
         if (isEmpty) {
             isValid = false;
