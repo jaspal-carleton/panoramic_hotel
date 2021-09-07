@@ -62,6 +62,16 @@ The app requires NodeJS and NPM to be installed on the system where this applica
    npm start
    ```
 
+## Usage
+
+### Supported APIs
+
+| Endpoint            | Request | API-URL                                   | Description                                        |
+|---------------------|---------|-------------------------------------------|----------------------------------------------------|
+| /api/v1/booking     | POST    | http://localhost:5000/api/v1/booking      | Create new booking as per HTTP POST body form data |
+| /api/v1/booking/:id | GET     | http://localhost:5000/api/v1/booking/:id  | Fetch booking details using booking id             |
+| /api/v1/booking/:id | DELETE  | http://localhost:5000/api/v1/booking/:id  | Delete booking using booking id                    |
+
 ## Authors
 
 Jaspal Singh
