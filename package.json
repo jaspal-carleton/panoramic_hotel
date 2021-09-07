@@ -1,0 +1,31 @@
+{
+  "name": "panoramic_hotel",
+  "version": "1.0.0",
+  "description": "Panoramic hotel's presidential suite booking app",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./bin/app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaspal-carleton/panoramic_hotel.git"
+  },
+  "author": "Jaspal Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaspal-carleton/panoramic_hotel/issues"
+  },
+  "homepage": "https://github.com/jaspal-carleton/panoramic_hotel#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "hashmap": "^2.4.0",
+    "http-errors": "^1.8.0",
+    "moment-timezone": "^0.5.33",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.12",
+    "uuid": "^8.3.2"
+  }
+}
