@@ -10,11 +10,29 @@ This Panoramic Hotel Booking App is a headless app, which means there is no UI t
 
 ### Built With
 
-* NodeJS 
-* ExpressJS
-* HashmapJS
-* UuidJS
-* MomentJS
+1. Programming language
+
+The app is primarly coded in JavaScript and make use of ES5/ES6 style of coding.
+
+2. Framework
+
+The app uses NodeJS and ExpressJS (https://expressjs.com) framework to design the RESTful API application.
+
+3. Database
+
+The app uses in-memory database JavaScript library called HashmapJS (https://www.npmjs.com/package/hashmap). The database only holds data until app is running. Upon stopping the app all data is lost. 
+
+4. Unique ID generator
+
+To generate universal unique booking ids, the app make use of NPM package called UUID (https://www.npmjs.com/package/uuid).
+
+5. Date-time formatting
+
+In order to manage date and do timestamp formatting, the app make use of MomentJS (https://www.npmjs.com/package/moment-timezone).
+
+6. Testing framework
+
+The app make use of testing frameworks such as Mocha, Chai, Sinon, and Nyc for the TDD, BDD, and code coverage testing.
 
 ### Dependencies
 
@@ -23,6 +41,14 @@ This Panoramic Hotel Booking App is a headless app, which means there is no UI t
 * http-errors
 * morgan
 * nodemon
+
+### Dev Dependencies
+
+* chai
+* mocha
+* nyc
+* rootpath
+* sinon
 
 ### Prerequisites
 
@@ -60,6 +86,18 @@ The app requires NodeJS and NPM to be installed on the system where this applica
 1. Start the app by executing following npm command from inside the project folder
    ```sh
    npm start
+   ```
+
+### Testing
+
+1. To run the test cases, execute following npm command from inside the project folder
+   ```sh
+   npm run test
+   ```
+
+2. To check the test coverage, execute following npm command from inside the project folder
+   ```sh
+   npm run coverage
    ```
 
 ## Usage
