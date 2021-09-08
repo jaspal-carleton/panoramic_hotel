@@ -45,6 +45,7 @@ The app make use of testing frameworks such as Mocha, Chai, Sinon, and Nyc for t
 ### Dev Dependencies
 
 * chai
+* chai-http
 * mocha
 * nyc
 * rootpath
@@ -90,12 +91,19 @@ The app requires NodeJS and NPM to be installed on the system where this applica
 
 ### Testing
 
-1. To run the test cases, execute following npm command from inside the project folder
+For testing you need to open two separate command terminals. On one terminal run the app and use other terminal to test the app. 
+
+1. Start the app in one of the command terminal by executing following npm command from inside the project folder
+   ```sh
+   npm start
+   ```
+
+2. To run the test cases, open another command terminal and execute following npm command from inside the project folder
    ```sh
    npm run test
    ```
 
-2. To check the test coverage, execute following npm command from inside the project folder
+3. To check the test coverage, execute following npm command from inside the project folder
    ```sh
    npm run coverage
    ```
@@ -204,6 +212,17 @@ Example
 ```
 
 ![Delete Booking Success](docs/delete_booking_success.png)
+
+
+## Test Results
+
+* Following are the list of test cases written for the app
+
+![Test Case List](docs/test_cases.png)
+
+* The test coverage for the app is shown below
+
+![Test Coverage](docs/test_coverage.png)
 
 ## Author
 
