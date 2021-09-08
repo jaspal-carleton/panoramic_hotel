@@ -1,0 +1,16 @@
+{
+    "uuidData": {
+        "uid": "61800372-2793-4102-92a0-509e72cee045"
+    },
+    "paramsData": {
+        "port": "5000",
+        "apiVersion": "v1"
+    },
+    "validateParamsData": {
+        "args": {
+            "email" : "a@a.com",
+            "guest_count": 2
+        },
+        "list": ["email", "guest_count"]
+    }
+}

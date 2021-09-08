@@ -30,6 +30,10 @@ To generate universal unique booking ids, the app make use of NPM package called
 
 In order to manage date and do timestamp formatting, the app make use of MomentJS (https://www.npmjs.com/package/moment-timezone).
 
+6. Testing framework
+
+The app make use of testing frameworks such as Mocha, Chai, Sinon, and Nyc for the TDD, BDD, and code coverage testing.
+
 ### Dependencies
 
 * body-parser
@@ -37,6 +41,14 @@ In order to manage date and do timestamp formatting, the app make use of MomentJ
 * http-errors
 * morgan
 * nodemon
+
+### Dev Dependencies
+
+* chai
+* mocha
+* nyc
+* rootpath
+* sinon
 
 ### Prerequisites
 
@@ -74,6 +86,18 @@ The app requires NodeJS and NPM to be installed on the system where this applica
 1. Start the app by executing following npm command from inside the project folder
    ```sh
    npm start
+   ```
+
+### Testing
+
+1. To run the test cases, execute following npm command from inside the project folder
+   ```sh
+   npm run test
+   ```
+
+2. To check the test coverage, execute following npm command from inside the project folder
+   ```sh
+   npm run coverage
    ```
 
 ## Usage
